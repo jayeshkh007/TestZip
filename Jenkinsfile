@@ -21,7 +21,7 @@ pipeline {
      stage('Build') {
       steps {
         sh 'chmod 777 ./gradlew'
-        sh './gradlew clean createZip'
+        sh './gradlew clean createZip --stacktrace'
         //archiveArtifacts artifacts: '**/build/distributions/*.zip', fingerprint: true
       }
 
