@@ -21,17 +21,10 @@ pipeline {
      stage('Build') {
       steps {
         sh 'chmod 777 ./gradlew'
-        sh './gradlew clean build'
+        sh './gradlew clean creatZip'
         //archiveArtifacts artifacts: '**/build/distributions/*.zip', fingerprint: true
       }
 
-    }
-
-  stage('Integration Tests') { // selenium test cases
-      steps {
-        sh "echo integration_tests"
-        //job ''
-      }
     }
 
   }
