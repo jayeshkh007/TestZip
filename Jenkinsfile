@@ -25,16 +25,6 @@ pipeline {
         //archiveArtifacts artifacts: '**/build/distributions/*.zip', fingerprint: true
       }
 
-      post {
-        always {
-          junit '**/build/test-results/test/*.xml'
-          pmd pattern: '', canComputeNew: false, healthy: '', unHealthy: ''
-          checkstyle pattern: 'build/reports/checkstyle/*.xml', canComputeNew: false, healthy: '', unHealthy: ''
-          step([$class: 'JacocoPublisher'])
-          step([$class: 'AnalysisPublisher', canComputeNew: false, defaultEncoding: '', healthy: '', unHealthy: ''])
-          step([$class: 'GitHubCommitStatusSetter'])
-        }
-      }
     }
 
   stage('Integration Tests') { // selenium test cases
