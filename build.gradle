@@ -15,5 +15,5 @@ task createZip(type:Zip) {
 	include '*'
 	archiveName="dist.zip"
   	destinationDir = file('build/')
-    from (files('src'))
+    from (files('./src'))
 }
