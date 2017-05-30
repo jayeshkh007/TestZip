@@ -17,8 +17,7 @@ pipeline {
     booleanParam(name: 'URGENT_BUILD', defaultValue: false, description: 'is this is an urgent build and can not wait')
   }
 
-  stages {
-     stage('Build') {
+ stage('Build') {
       steps {
         sh 'chmod 777 ./gradlew'
         sh './gradlew clean creatZip'
@@ -27,7 +26,7 @@ pipeline {
 
     }
    stage ('selenium test') {
-      def job = build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
+       build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
   }
-  }
+  
 }
