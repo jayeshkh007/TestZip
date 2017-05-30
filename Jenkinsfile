@@ -17,14 +17,15 @@ pipeline {
     booleanParam(name: 'URGENT_BUILD', defaultValue: false, description: 'is this is an urgent build and can not wait')
   }
 
+  stages {
  stage('Build') {
       steps {
         sh 'chmod 777 ./gradlew'
         sh './gradlew clean creatZip'
         //archiveArtifacts artifacts: '**/build/distributions/*.zip', fingerprint: true
       }
-
     }
+  }
    stage ('selenium test') {
        build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
   }
