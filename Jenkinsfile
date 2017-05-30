@@ -25,7 +25,7 @@ pipeline {
         stage('two') {
             steps {
                 sh "echo integration_tests"
-                def job = build job: 'say-hello'
+                build job: 'say-hello'
             }
         }
     }
