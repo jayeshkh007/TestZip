@@ -1,9 +1,8 @@
 #!groovy
 
 pipeline {
-  agent any
-
-  environment {
+    agent any
+	environment {
     DEV_HOST = "172.30.3.114"
     }
 
@@ -16,21 +15,18 @@ pipeline {
     string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: 'deployment environment')
     booleanParam(name: 'URGENT_BUILD', defaultValue: false, description: 'is this is an urgent build and can not wait')
   }
-
-  stages {
- stage('Build') {
-      steps {
-        sh 'chmod 777 ./gradlew'
-        sh './gradlew clean creatZip'
-        //archiveArtifacts artifacts: '**/build/distributions/*.zip', fingerprint: true
-      }
+    stages {
+        stage('one') {
+            steps {
+               sh 'chmod 777 ./gradlew'
+               sh './gradlew clean creatZip'
+            }
+        }
+        stage('two') {
+            steps {
+                sh "echo integration_tests"
+                build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
+            }
+        }
     }
-  }
-  stage('Integration Tests') { // selenium test cases
-      steps {
-        sh "echo integration_tests"
-        build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
-      }
-    }
-  
 }
