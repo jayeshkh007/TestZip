@@ -25,7 +25,7 @@ pipeline {
         stage('two') {
             steps {
                 sh "echo integration_tests"
-                def job = build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
+                def job = build job: 'say-hello'
             }
         }
     }
