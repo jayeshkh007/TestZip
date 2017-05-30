@@ -26,8 +26,11 @@ pipeline {
       }
     }
   }
-   stage ('selenium test') {
-       build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
-  }
+  stage('Integration Tests') { // selenium test cases
+      steps {
+        sh "echo integration_tests"
+        build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
+      }
+    }
   
 }
