@@ -26,10 +26,8 @@ pipeline {
       }
 
     }
-
-  
-  stage ('selenium test') {
-      build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
+   stage ('selenium test') {
+      def job = build job: 'say-hello', parameters: [[$class: 'StringParameterValue', name: 'admin', value: admin]]
   }
   }
 }
