@@ -35,7 +35,7 @@ pipeline {
         stage('two') {
             steps {
                 sh "echo integration_tests"
-                build job: 'qa-selenium-automation-script-api'
+                build job: 'say-hello'
             }
         }
     }
