@@ -17,6 +17,3 @@ include 'services:webservice'
 */
 
 rootProject.name = 'TestZip'
-nexusUrl=https://tools.adzhub.com/nexus
-nexusUsername=admin
-nexusPassword=q1w2e3r4t5y6
