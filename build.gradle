@@ -4,14 +4,14 @@ apply plugin: 'maven'
 
 repositories {
     maven {
-        url https://tools.adzhub.com/nexus/content/repositories/test/
+        url https://tools.adzhub.com/nexus
         credentials {
             username admin
             password q1w2e3r4t5y6
         }
     }
     maven {
-        url https://tools.adzhub.com/nexus/content/repositories/test/
+        url https://tools.adzhub.com/nexus
         credentials {
             username admin
             password q1w2e3r4t5y6
@@ -19,7 +19,7 @@ repositories {
     }
     jcenter()
     maven {
-        url "https://repository.cloudera.com/artifactory/cloudera-repos/"
+        url "https://tools.adzhub.com/nexus/content/repositories/test/"
     }
     maven {
       url "http://conjars.org/repo"
