@@ -16,13 +16,6 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     testCompile 'junit:junit:4.12'
 }
-
-task createZip(type:Zip) {
-	include '*'
-	archiveName="dist.zip"
-  	destinationDir = file('build/')
-    from (files('./src'))
-}
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -34,5 +27,12 @@ uploadArchives {
             }
         }
     }
+}
+
+task createZip(type:Zip) {
+	include '*'
+	archiveName="dist.zip"
+  	destinationDir = file('build/')
+    from (files('./src'))
 }
 
