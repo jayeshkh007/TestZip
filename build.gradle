@@ -2,28 +2,15 @@ apply plugin: 'java'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
+apply plugin: 'maven'
+
+group = 'org.sonatype.nexus.examples'
+version = '1.0.0-SNAPSHOT'
+
 repositories {
-    maven {
-        url https://tools.adzhub.com/nexus
-        credentials {
-            username admin
-            password q1w2e3r4t5y6
-        }
-    }
-    maven {
-        url https://tools.adzhub.com/nexus
-        credentials {
-            username admin
-            password q1w2e3r4t5y6
-        }
-    }
-    jcenter()
-    maven {
-        url "https://tools.adzhub.com/nexus/content/repositories/test/"
-    }
-    maven {
-      url "http://conjars.org/repo"
-    } // the cdh 5.7 / 5.8 have transitive dependencies that are not available on mavencentral
+  maven {
+    url "${nexusUrl}/content/groups/public"
+  }
 }
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
@@ -36,3 +23,16 @@ task createZip(type:Zip) {
   	destinationDir = file('build/')
     from (files('./src'))
 }
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "${nexusUrl}/content/repositories/releases") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+            snapshotRepository(url: "${nexusUrl}/content/repositories/snapshots") {
+                authentication(userName: nexusUsername, password: nexusPassword)
+            }
+        }
+    }
+}
+
