@@ -4,17 +4,17 @@ apply plugin: 'maven'
 
 repositories {
     maven {
-        url nexus_release_url
+        url https://tools.adzhub.com/nexus/content/repositories/test/
         credentials {
-            username nexus_user
-            password nexus_password
+            username admin
+            password q1w2e3r4t5y6
         }
     }
     maven {
-        url nexus_snapshot_url
+        url https://tools.adzhub.com/nexus/content/repositories/test/
         credentials {
-            username nexus_user
-            password nexus_password
+            username admin
+            password q1w2e3r4t5y6
         }
     }
     jcenter()
