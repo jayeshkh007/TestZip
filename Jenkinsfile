@@ -21,17 +21,7 @@ pipeline {
                sh 'chmod 777 ./gradlew'
                sh './gradlew clean creatZip'
             }
-        post {
-        always {
-          junit '**/build/test-results/test/*.xml'
-          pmd pattern: '', canComputeNew: false, healthy: '', unHealthy: ''
-          checkstyle pattern: 'build/reports/checkstyle/*.xml', canComputeNew: false, healthy: '', unHealthy: ''
-          step([$class: 'JacocoPublisher'])
-          step([$class: 'AnalysisPublisher', canComputeNew: false, defaultEncoding: '', healthy: '', unHealthy: ''])
-          step([$class: 'GitHubCommitStatusSetter'])
-              }
-           }
-        }
+         }
         stage('two') {
             steps {
                 sh "echo integration_tests"
