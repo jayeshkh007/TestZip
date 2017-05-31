@@ -1,28 +1,30 @@
 apply plugin: 'java'
 apply plugin: 'maven-publish'
+apply plugin: 'maven'
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-}
-    repositories {
-        maven {
-            credentials {
-                username project.properties['admin']
-                password project.properties['q1w2e3r4t5y6']
-            }
-            url project.properties['https://tools.adzhub.com/nexus']
-        }
-    }
 repositories {
-    // Use 'jcenter' for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
+    maven {
+        url nexus_release_url
+        credentials {
+            username nexus_user
+            password nexus_password
+        }
+    }
+    maven {
+        url nexus_snapshot_url
+        credentials {
+            username nexus_user
+            password nexus_password
+        }
+    }
     jcenter()
+    maven {
+        url "https://repository.cloudera.com/artifactory/cloudera-repos/"
+    }
+    maven {
+      url "http://conjars.org/repo"
+    } // the cdh 5.7 / 5.8 have transitive dependencies that are not available on mavencentral
 }
-
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     testCompile 'junit:junit:4.12'
