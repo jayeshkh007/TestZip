@@ -33,7 +33,7 @@ uploadArchives {
 task createZip(type:Zip) {
 	include '*'
 	archiveName="dist.zip"
-  	destinationDir = file('build/')
+  	destinationDir = files('./build')
     from (files('./build'))
 }
 
