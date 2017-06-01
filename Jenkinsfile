@@ -19,7 +19,7 @@ pipeline {
         stage('one') {
             steps {
                sh 'chmod 777 ./gradlew'
-               sh './gradlew clean creatZip'
+               sh './gradlew clean build'
             }
          }
         stage('two') {
