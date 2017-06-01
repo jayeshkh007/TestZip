@@ -5,7 +5,7 @@ apply plugin: 'maven'
 repositories {
   jcenter()
   maven {
-    url "${nexusUrl}/content/groups/public"
+    url "${nexusUrl}/content/repositories/releases"
   }
 }
 dependencies {
@@ -22,8 +22,8 @@ uploadArchives {
                 authentication(userName: nexusUsername, password: nexusPassword)
             }
              pom.version = "1.0-SNAPSHOT"
-             pom.artifactId = "simple-project"
-             pom.groupId = "com.example"
+             pom.artifactId = "test"
+             pom.groupId = "test"
         }
     }
 }
