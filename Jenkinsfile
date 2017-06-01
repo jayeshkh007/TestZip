@@ -22,11 +22,6 @@ pipeline {
                sh './gradlew clean build upload'
             }
          }
-        stage('two') {
-            steps {
-                sh "echo integration_tests"
-                build job: 'say-hello'
-            }
-        }
+        
     }
 }
