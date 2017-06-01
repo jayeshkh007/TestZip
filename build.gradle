@@ -8,6 +8,7 @@ group = 'org.sonatype.nexus.examples'
 version = '1.0.0-SNAPSHOT'
 
 repositories {
+  jcenter()
   maven {
     url "${nexusUrl}/content/groups/public"
   }
