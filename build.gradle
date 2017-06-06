@@ -22,8 +22,8 @@ uploadArchives {
                 authentication(userName: nexusUsername, password: nexusPassword)
             }
              pom.version = "1.0-SNAPSHOT"
-             pom.artifactId = "test"
-             pom.groupId = "test"
+             pom.artifactId = "testing"
+             pom.groupId = "testing"
         }
     }
 }
