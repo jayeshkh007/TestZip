@@ -5,7 +5,7 @@ apply plugin: 'maven'
 repositories {
   jcenter()
   maven {
-    url "${nexusUrl}/content/repositories/releases"
+    url "${nexusUrl}/content/repositories/test"
   }
 }
 dependencies {
