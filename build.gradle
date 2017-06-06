@@ -4,10 +4,7 @@ apply plugin: 'maven'
 
 repositories {
   jcenter()
-  maven {
-    url "${nexusUrl}/content/repositories/testing/"
   }
-}
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     testCompile 'junit:junit:4.12'
@@ -16,14 +13,16 @@ dependencies {
     compile "net.sf.webtestfixtures:webtestfixtures:2.0.1.3"
 }
 uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "${nexusUrl}/content/repositories/snapshots") {
-                authentication(userName: nexusUsername, password: nexusPassword)
-            }
-             pom.version = "1.0-SNAPSHOT"
-             pom.artifactId = "testing"
-             pom.groupId = "testing"
-        }
+  repositories {
+    mavenDeployer {
+      repository(
+        url: "${nexusUrl}/content/repositories/testing") {
+          authentication(userName: nexusUsername, password: nexusPassword)
+      }
+      snapshotRepository(
+        url: "${nexusUrl}/content/repositories/snapshots") {
+          authentication(userName: nexusUsername, password: nexusPassword)
+      }
     }
+  }
 }
