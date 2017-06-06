@@ -18,7 +18,7 @@ dependencies {
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "${nexusUrl}/content/repositories/testing") {
+            repository(url: "${nexusUrl}/content/repositories/snapshots") {
                 authentication(userName: nexusUsername, password: nexusPassword)
             }
              pom.version = "1.0-SNAPSHOT"
