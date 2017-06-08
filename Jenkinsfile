@@ -19,9 +19,8 @@ pipeline {
         stage('one') {
             steps {
                sh 'chmod 777 ./gradlew'
-               sh './gradlew clean build upload'
-	       archiveArtifacts artifacts: '**/build/libs/*.jar', fingerprint: true
-	       
+               sh './gradlew clean buildRPM'
+	             
             }
          }
         
