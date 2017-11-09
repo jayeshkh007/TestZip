@@ -16,7 +16,7 @@ pipeline {
     booleanParam(name: 'URGENT_BUILD', defaultValue: false, description: 'is this is an urgent build and can not wait')
   }
     stages {
-        stage('one_test') {
+        stage('one') {
             steps {
                sh 'chmod 777 ./gradlew'
                sh './gradlew clean buildRPM'
